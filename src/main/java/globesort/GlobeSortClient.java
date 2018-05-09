@@ -40,9 +40,9 @@ public class GlobeSortClient {
 
     public void run(Integer[] values) throws Exception {
         System.out.println("Pinging " + serverStr + "...");
-        int startTime = System.nanoTime();
+        long startTime = System.nanoTime();
         serverStub.ping(Empty.newBuilder().build());
-        int endTime = System.nanoTime();
+        long endTime = System.nanoTime();
         System.out.println("Ping successful.");
         System.out.println("Time in ns was: " + (endTime-startTime));
 
