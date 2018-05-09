@@ -53,9 +53,9 @@ public class GlobeSortClient {
         endTime = System.nanoTime();
         System.out.println("Sorted array");
         System.out.println("Application Throughput was: " 
-                            + ((values.length)/(endTime-startTime));
+                            + ((values.length)/(endTime-startTime)));
         System.out.println("One-way Network Throughput was: " 
-                            + ((values.length * 4) / (((endTime-startTime) - request.getTime())/2));
+                            + ((values.length * 4) / (((endTime-startTime) - request.getTime())/2)));
     }
 
     public void shutdown() throws InterruptedException {
