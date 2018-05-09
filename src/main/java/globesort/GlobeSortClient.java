@@ -40,13 +40,22 @@ public class GlobeSortClient {
 
     public void run(Integer[] values) throws Exception {
         System.out.println("Pinging " + serverStr + "...");
+        int startTime = System.nanoTime();
         serverStub.ping(Empty.newBuilder().build());
+        int endTime = System.nanoTime();
         System.out.println("Ping successful.");
+        System.out.println("Time in ns was: " + (endTime-startTime));
 
         System.out.println("Requesting server to sort array");
         IntArray request = IntArray.newBuilder().addAllValues(Arrays.asList(values)).build();
+        startTime = System.nanoTime();
         IntArray response = serverStub.sortIntegers(request);
+        endTime = System.nanoTime();
         System.out.println("Sorted array");
+        System.out.println("Application Throughput was: " 
+                            + ((endTime-startTime)/(values.length)));
+        System.out.println("One-way Network Throughput was: " 
+                            + (((endTime-startTime) - request.getTime())/2));
     }
 
     public void shutdown() throws InterruptedException {
